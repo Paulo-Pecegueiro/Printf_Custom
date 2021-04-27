@@ -1,0 +1,9 @@
+freertos.c:49:6:send_deftask	40	static
+freertos.c:54:6:send_task2	8	static
+freertos.c:60:6:send_task3	8	static
+freertos.c:93:6:vApplicationGetIdleTaskMemory	24	static
+freertos.c:107:6:MX_FREERTOS_Init	128	static
+freertos.c:158:6:StartDefaultTask	16	static
+freertos.c:180:6:Task2_init	16	static
+freertos.c:200:6:Task3_init	16	static
+freertos.c:219:6:TaskLED_init	16	static
