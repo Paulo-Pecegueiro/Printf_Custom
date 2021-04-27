@@ -21,9 +21,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, DATA
   8 .data         00000194  20000000  08009b50  00020000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  9 .bss          00003174  20000194  08009ce4  00020194  2**2
+  9 .bss          000021d4  20000194  08009ce4  00020194  2**2
                   ALLOC
- 10 ._user_heap_stack 00001400  20003308  08009ce4  00023308  2**0
+ 10 ._user_heap_stack 00000a00  20002368  08009ce4  00022368  2**0
                   ALLOC
  11 .ARM.attributes 00000029  00000000  00000000  00020194  2**0
                   CONTENTS, READONLY
@@ -854,7 +854,7 @@ void MX_FREERTOS_Init(void) {
 
   /* Create the thread(s) */
   /* definition and creation of defaultTask */
-  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 256);
+  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
  8000966:	4b27      	ldr	r3, [pc, #156]	; (8000a04 <MX_FREERTOS_Init+0xa4>)
  8000968:	f107 0454 	add.w	r4, r7, #84	; 0x54
  800096c:	461d      	mov	r5, r3
@@ -872,7 +872,7 @@ void MX_FREERTOS_Init(void) {
  800098a:	6013      	str	r3, [r2, #0]
 
   /* definition and creation of Task2 */
-  osThreadDef(Task2, Task2_init, osPriorityAboveNormal, 0, 256);
+  osThreadDef(Task2, Task2_init, osPriorityAboveNormal, 0, 128);
  800098c:	4b1f      	ldr	r3, [pc, #124]	; (8000a0c <MX_FREERTOS_Init+0xac>)
  800098e:	f107 0438 	add.w	r4, r7, #56	; 0x38
  8000992:	461d      	mov	r5, r3
@@ -890,7 +890,7 @@ void MX_FREERTOS_Init(void) {
  80009b0:	6013      	str	r3, [r2, #0]
 
   /* definition and creation of Task3 */
-  osThreadDef(Task3, Task3_init, osPriorityBelowNormal, 0, 256);
+  osThreadDef(Task3, Task3_init, osPriorityBelowNormal, 0, 128);
  80009b2:	4b18      	ldr	r3, [pc, #96]	; (8000a14 <MX_FREERTOS_Init+0xb4>)
  80009b4:	f107 041c 	add.w	r4, r7, #28
  80009b8:	461d      	mov	r5, r3
@@ -936,13 +936,13 @@ void MX_FREERTOS_Init(void) {
  8000a00:	bdb0      	pop	{r4, r5, r7, pc}
  8000a02:	bf00      	nop
  8000a04:	08009a60 	.word	0x08009a60
- 8000a08:	200025b0 	.word	0x200025b0
+ 8000a08:	20001610 	.word	0x20001610
  8000a0c:	08009a7c 	.word	0x08009a7c
- 8000a10:	200025b8 	.word	0x200025b8
+ 8000a10:	20001618 	.word	0x20001618
  8000a14:	08009a98 	.word	0x08009a98
- 8000a18:	200025b4 	.word	0x200025b4
+ 8000a18:	20001614 	.word	0x20001614
  8000a1c:	08009ab4 	.word	0x08009ab4
- 8000a20:	200025bc 	.word	0x200025bc
+ 8000a20:	2000161c 	.word	0x2000161c
 
 08000a24 <StartDefaultTask>:
   * @param  argument: Not used
@@ -1592,7 +1592,7 @@ HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority)
  8000d7a:	bd80      	pop	{r7, pc}
  8000d7c:	40021000 	.word	0x40021000
  8000d80:	431bde83 	.word	0x431bde83
- 8000d84:	200025c0 	.word	0x200025c0
+ 8000d84:	20001620 	.word	0x20001620
  8000d88:	40012c00 	.word	0x40012c00
 
 08000d8c <NMI_Handler>:
@@ -1716,7 +1716,7 @@ void USB_LP_CAN1_RX0_IRQHandler(void)
  8000dc6:	bf00      	nop
  8000dc8:	bd80      	pop	{r7, pc}
  8000dca:	bf00      	nop
- 8000dcc:	2000301c 	.word	0x2000301c
+ 8000dcc:	2000207c 	.word	0x2000207c
 
 08000dd0 <TIM1_UP_IRQHandler>:
 
@@ -1740,7 +1740,7 @@ void TIM1_UP_IRQHandler(void)
  8000dda:	bf00      	nop
  8000ddc:	bd80      	pop	{r7, pc}
  8000dde:	bf00      	nop
- 8000de0:	200025c0 	.word	0x200025c0
+ 8000de0:	20001620 	.word	0x20001620
 
 08000de4 <SystemInit>:
   * @note   This function should be used only after reset.
@@ -1826,7 +1826,7 @@ void MX_USART1_UART_Init(void)
  8000e36:	bf00      	nop
  8000e38:	bd80      	pop	{r7, pc}
  8000e3a:	bf00      	nop
- 8000e3c:	20002608 	.word	0x20002608
+ 8000e3c:	20001668 	.word	0x20001668
  8000e40:	40013800 	.word	0x40013800
 
 08000e44 <HAL_UART_MspInit>:
@@ -2005,7 +2005,7 @@ LoopFillZerobss:
   ldr r2, =_sbss
  8000f1c:	20000194 	.word	0x20000194
   ldr r3, = _ebss
- 8000f20:	20003308 	.word	0x20003308
+ 8000f20:	20002368 	.word	0x20002368
 
 08000f24 <ADC1_2_IRQHandler>:
  * @retval : None
@@ -2087,7 +2087,7 @@ __weak void HAL_IncTick(void)
  8000f6c:	bc80      	pop	{r7}
  8000f6e:	4770      	bx	lr
  8000f70:	20000008 	.word	0x20000008
- 8000f74:	20002648 	.word	0x20002648
+ 8000f74:	200016a8 	.word	0x200016a8
 
 08000f78 <HAL_GetTick>:
   * @note  This function is declared as __weak to be overwritten in case of other
@@ -2106,7 +2106,7 @@ __weak uint32_t HAL_GetTick(void)
  8000f82:	46bd      	mov	sp, r7
  8000f84:	bc80      	pop	{r7}
  8000f86:	4770      	bx	lr
- 8000f88:	20002648 	.word	0x20002648
+ 8000f88:	200016a8 	.word	0x200016a8
 
 08000f8c <__NVIC_SetPriorityGrouping>:
            In case of a conflict between priority grouping and available
@@ -21361,11 +21361,11 @@ void *pvReturn = NULL;
  800861e:	3728      	adds	r7, #40	; 0x28
  8008620:	46bd      	mov	sp, r7
  8008622:	bd80      	pop	{r7, pc}
- 8008624:	2000209c 	.word	0x2000209c
- 8008628:	200020a8 	.word	0x200020a8
- 800862c:	200020a0 	.word	0x200020a0
- 8008630:	20002094 	.word	0x20002094
- 8008634:	200020a4 	.word	0x200020a4
+ 8008624:	200010fc 	.word	0x200010fc
+ 8008628:	20001108 	.word	0x20001108
+ 800862c:	20001100 	.word	0x20001100
+ 8008630:	200010f4 	.word	0x200010f4
+ 8008634:	20001104 	.word	0x20001104
 
 08008638 <vPortFree>:
 /*-----------------------------------------------------------*/
@@ -21489,8 +21489,8 @@ BlockLink_t *pxLink;
  80086de:	3718      	adds	r7, #24
  80086e0:	46bd      	mov	sp, r7
  80086e2:	bd80      	pop	{r7, pc}
- 80086e4:	200020a8 	.word	0x200020a8
- 80086e8:	200020a0 	.word	0x200020a0
+ 80086e4:	20001108 	.word	0x20001108
+ 80086e8:	20001100 	.word	0x20001100
 
 080086ec <prvHeapInit>:
 	/* This just exists to keep the linker quiet. */
@@ -21506,7 +21506,7 @@ BlockLink_t *pxFirstFreeBlock;
 uint8_t *pucAlignedHeap;
 size_t uxAddress;
 size_t xTotalHeapSize = configTOTAL_HEAP_SIZE;
- 80086f2:	f641 3358 	movw	r3, #7000	; 0x1b58
+ 80086f2:	f640 33b8 	movw	r3, #3000	; 0xbb8
  80086f6:	60bb      	str	r3, [r7, #8]
 
 	/* Ensure the heap starts on a correctly aligned boundary. */
@@ -21625,11 +21625,11 @@ size_t xTotalHeapSize = configTOTAL_HEAP_SIZE;
  8008794:	4770      	bx	lr
  8008796:	bf00      	nop
  8008798:	2000053c 	.word	0x2000053c
- 800879c:	20002094 	.word	0x20002094
- 80087a0:	2000209c 	.word	0x2000209c
- 80087a4:	200020a4 	.word	0x200020a4
- 80087a8:	200020a0 	.word	0x200020a0
- 80087ac:	200020a8 	.word	0x200020a8
+ 800879c:	200010f4 	.word	0x200010f4
+ 80087a0:	200010fc 	.word	0x200010fc
+ 80087a4:	20001104 	.word	0x20001104
+ 80087a8:	20001100 	.word	0x20001100
+ 80087ac:	20001108 	.word	0x20001108
 
 080087b0 <prvInsertBlockIntoFreeList>:
 /*-----------------------------------------------------------*/
@@ -21772,8 +21772,8 @@ uint8_t *puc;
  8008852:	46bd      	mov	sp, r7
  8008854:	bc80      	pop	{r7}
  8008856:	4770      	bx	lr
- 8008858:	20002094 	.word	0x20002094
- 800885c:	2000209c 	.word	0x2000209c
+ 8008858:	200010f4 	.word	0x200010f4
+ 800885c:	200010fc 	.word	0x200010fc
 
 08008860 <printf_custom>:
   * @return 1 if the peripheral is busy, 0 if the data have been printed
@@ -22155,7 +22155,7 @@ uint8_t printf_custom(char* format,...)
             	}
                 break;
  8008bde:	e1a8      	b.n	8008f32 <printf_custom+0x6d2>
- 8008be0:	200022ec 	.word	0x200022ec
+ 8008be0:	2000134c 	.word	0x2000134c
 
             case 'x':
             	ui = va_arg(arg,unsigned int);
@@ -22643,9 +22643,9 @@ static uint8_t convert(char* buffer, uint8_t index, unsigned int num, int base)
  800900e:	bc80      	pop	{r7}
  8009010:	4770      	bx	lr
  8009012:	bf00      	nop
- 8009014:	200020cb 	.word	0x200020cb
+ 8009014:	2000112b 	.word	0x2000112b
  8009018:	20000120 	.word	0x20000120
- 800901c:	200020ac 	.word	0x200020ac
+ 800901c:	2000110c 	.word	0x2000110c
 
 08009020 <MX_USB_DEVICE_Init>:
 /**
@@ -22713,7 +22713,7 @@ void MX_USB_DEVICE_Init(void)
  800906c:	bf00      	nop
  800906e:	bd80      	pop	{r7, pc}
  8009070:	20000144 	.word	0x20000144
- 8009074:	200022ec 	.word	0x200022ec
+ 8009074:	2000134c 	.word	0x2000134c
  8009078:	20000018 	.word	0x20000018
  800907c:	20000134 	.word	0x20000134
 
@@ -22743,9 +22743,9 @@ static int8_t CDC_Init_FS(void)
 }
  8009098:	4618      	mov	r0, r3
  800909a:	bd80      	pop	{r7, pc}
- 800909c:	20002a34 	.word	0x20002a34
- 80090a0:	200022ec 	.word	0x200022ec
- 80090a4:	2000264c 	.word	0x2000264c
+ 800909c:	20001a94 	.word	0x20001a94
+ 80090a0:	2000134c 	.word	0x2000134c
+ 80090a4:	200016ac 	.word	0x200016ac
 
 080090a8 <CDC_DeInit_FS>:
 /**
@@ -22875,7 +22875,7 @@ static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len)
  8009192:	46bd      	mov	sp, r7
  8009194:	bd80      	pop	{r7, pc}
  8009196:	bf00      	nop
- 8009198:	200022ec 	.word	0x200022ec
+ 8009198:	2000134c 	.word	0x2000134c
 
 0800919c <CDC_Transmit_FS>:
   * @param  Buf: Buffer of data to be sent
@@ -22927,7 +22927,7 @@ uint8_t CDC_Transmit_FS(uint8_t* Buf, uint16_t Len)
  80091de:	46bd      	mov	sp, r7
  80091e0:	bd80      	pop	{r7, pc}
  80091e2:	bf00      	nop
- 80091e4:	200022ec 	.word	0x200022ec
+ 80091e4:	2000134c 	.word	0x2000134c
 
 080091e8 <USBD_FS_DeviceDescriptor>:
   * @param  speed : Current device speed
@@ -23028,7 +23028,7 @@ uint8_t * USBD_FS_ProductStrDescriptor(USBD_SpeedTypeDef speed, uint16_t *length
  800925e:	46bd      	mov	sp, r7
  8009260:	bd80      	pop	{r7, pc}
  8009262:	bf00      	nop
- 8009264:	20002e1c 	.word	0x20002e1c
+ 8009264:	20001e7c 	.word	0x20001e7c
  8009268:	08009ae8 	.word	0x08009ae8
 
 0800926c <USBD_FS_ManufacturerStrDescriptor>:
@@ -23057,7 +23057,7 @@ uint8_t * USBD_FS_ManufacturerStrDescriptor(USBD_SpeedTypeDef speed, uint16_t *l
  8009286:	3708      	adds	r7, #8
  8009288:	46bd      	mov	sp, r7
  800928a:	bd80      	pop	{r7, pc}
- 800928c:	20002e1c 	.word	0x20002e1c
+ 800928c:	20001e7c 	.word	0x20001e7c
  8009290:	08009b00 	.word	0x08009b00
 
 08009294 <USBD_FS_SerialStrDescriptor>:
@@ -23136,7 +23136,7 @@ uint8_t * USBD_FS_ConfigStrDescriptor(USBD_SpeedTypeDef speed, uint16_t *length)
  80092e6:	46bd      	mov	sp, r7
  80092e8:	bd80      	pop	{r7, pc}
  80092ea:	bf00      	nop
- 80092ec:	20002e1c 	.word	0x20002e1c
+ 80092ec:	20001e7c 	.word	0x20001e7c
  80092f0:	08009b14 	.word	0x08009b14
 
 080092f4 <USBD_FS_InterfaceStrDescriptor>:
@@ -23180,7 +23180,7 @@ uint8_t * USBD_FS_InterfaceStrDescriptor(USBD_SpeedTypeDef speed, uint16_t *leng
  8009322:	46bd      	mov	sp, r7
  8009324:	bd80      	pop	{r7, pc}
  8009326:	bf00      	nop
- 8009328:	20002e1c 	.word	0x20002e1c
+ 8009328:	20001e7c 	.word	0x20001e7c
  800932c:	08009b20 	.word	0x08009b20
 
 08009330 <Get_SerialNum>:
@@ -23720,7 +23720,7 @@ USBD_StatusTypeDef USBD_LL_Init(USBD_HandleTypeDef *pdev)
  800962e:	46bd      	mov	sp, r7
  8009630:	bd80      	pop	{r7, pc}
  8009632:	bf00      	nop
- 8009634:	2000301c 	.word	0x2000301c
+ 8009634:	2000207c 	.word	0x2000207c
  8009638:	40005c00 	.word	0x40005c00
 
 0800963c <USBD_LL_Start>:
@@ -24199,7 +24199,7 @@ void *USBD_static_malloc(uint32_t size)
  80098ce:	46bd      	mov	sp, r7
  80098d0:	bc80      	pop	{r7}
  80098d2:	4770      	bx	lr
- 80098d4:	200020cc 	.word	0x200020cc
+ 80098d4:	2000112c 	.word	0x2000112c
 
 080098d8 <USBD_static_free>:
   * @brief  Dummy memory free

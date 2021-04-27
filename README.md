@@ -1,11 +1,11 @@
 # Printf_Custom
  A small footprint and fast printf for stm32, suports UART and USB CDC VCP.
 
-###Statistics
+### Statistics
 Optimization  | Flash memory used
 ------------- | -------------
-None  | 1.79KB
-Optimize for size (-Os)  | 738B
+None  | 1.99KB
+Optimize for size (-Os)  | 830B
 
 ### Features
 

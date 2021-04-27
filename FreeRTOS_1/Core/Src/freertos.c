@@ -127,15 +127,15 @@ void MX_FREERTOS_Init(void) {
 
   /* Create the thread(s) */
   /* definition and creation of defaultTask */
-  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 256);
+  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
   /* definition and creation of Task2 */
-  osThreadDef(Task2, Task2_init, osPriorityAboveNormal, 0, 256);
+  osThreadDef(Task2, Task2_init, osPriorityAboveNormal, 0, 128);
   Task2Handle = osThreadCreate(osThread(Task2), NULL);
 
   /* definition and creation of Task3 */
-  osThreadDef(Task3, Task3_init, osPriorityBelowNormal, 0, 256);
+  osThreadDef(Task3, Task3_init, osPriorityBelowNormal, 0, 128);
   Task3Handle = osThreadCreate(osThread(Task3), NULL);
 
   /* definition and creation of TaskLED */

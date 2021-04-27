@@ -1410,7 +1410,7 @@ END GROUP
 LOAD c:/st/stm32cubeide_1.3.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7-m/nofp/crtend.o
 LOAD c:/st/stm32cubeide_1.3.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7-m/nofp/crtn.o
                 0x0000000020005000                _estack = (ORIGIN (RAM) + LENGTH (RAM))
-                0x0000000000001000                _Min_Heap_Size = 0x1000
+                0x0000000000000600                _Min_Heap_Size = 0x600
                 0x0000000000000400                _Min_Stack_Size = 0x400
 
 .isr_vector     0x0000000008000000      0x10c
@@ -2271,7 +2271,7 @@ LOAD c:/st/stm32cubeide_1.3.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .igot.plt      0x0000000020000180        0x0 c:/st/stm32cubeide_1.3.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7-m/nofp/crtbegin.o
                 0x0000000020000180                . = ALIGN (0x4)
 
-.bss            0x0000000020000180     0x3170 load address 0x0000000008005304
+.bss            0x0000000020000180     0x21d0 load address 0x0000000008005304
                 0x0000000020000180                _sbss = .
                 0x0000000020000180                __bss_start__ = _sbss
  *(.bss)
@@ -2331,50 +2331,50 @@ LOAD c:/st/stm32cubeide_1.3.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .bss.ulMaxPRIGROUPValue
                 0x0000000020000520        0x4 Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.o
  .bss.pxEnd     0x0000000020000524        0x4 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
- .bss.ucHeap    0x0000000020000528     0x1b58 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
+ .bss.ucHeap    0x0000000020000528      0xbb8 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
  .bss.xBlockAllocatedBit
-                0x0000000020002080        0x4 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
+                0x00000000200010e0        0x4 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
  .bss.xFreeBytesRemaining
-                0x0000000020002084        0x4 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
+                0x00000000200010e4        0x4 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
  .bss.xMinimumEverFreeBytesRemaining
-                0x0000000020002088        0x4 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
- .bss.xStart    0x000000002000208c        0x8 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
- .bss.buf.8344  0x0000000020002094       0x20 Printf_Custom/printf_custom.o
- .bss.mem.8428  0x00000000200020b4      0x220 USB_DEVICE/Target/usbd_conf.o
+                0x00000000200010e8        0x4 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
+ .bss.xStart    0x00000000200010ec        0x8 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
+ .bss.buf.8344  0x00000000200010f4       0x20 Printf_Custom/printf_custom.o
+ .bss.mem.8428  0x0000000020001114      0x220 USB_DEVICE/Target/usbd_conf.o
  *(COMMON)
- COMMON         0x00000000200022d4      0x2d4 Core/Src/freertos.o
-                0x00000000200022d4                hUsbDeviceFS
-                0x0000000020002598                defaultTaskHandle
-                0x000000002000259c                Task3Handle
-                0x00000000200025a0                Task2Handle
-                0x00000000200025a4                TaskLEDHandle
- COMMON         0x00000000200025a8       0x48 Core/Src/stm32f1xx_hal_timebase_tim.o
-                0x00000000200025a8                htim1
- COMMON         0x00000000200025f0       0x40 Core/Src/usart.o
-                0x00000000200025f0                huart1
- COMMON         0x0000000020002630        0x4 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
-                0x0000000020002630                uwTick
- COMMON         0x0000000020002634      0x7d0 USB_DEVICE/App/usbd_cdc_if.o
-                0x0000000020002634                UserRxBufferFS
-                0x0000000020002a1c                UserTxBufferFS
- COMMON         0x0000000020002e04      0x200 USB_DEVICE/App/usbd_desc.o
-                0x0000000020002e04                USBD_StrDesc
- COMMON         0x0000000020003004      0x2ec USB_DEVICE/Target/usbd_conf.o
-                0x0000000020003004                hpcd_USB_FS
-                0x00000000200032f0                . = ALIGN (0x4)
-                0x00000000200032f0                _ebss = .
-                0x00000000200032f0                __bss_end__ = _ebss
+ COMMON         0x0000000020001334      0x2d4 Core/Src/freertos.o
+                0x0000000020001334                hUsbDeviceFS
+                0x00000000200015f8                defaultTaskHandle
+                0x00000000200015fc                Task3Handle
+                0x0000000020001600                Task2Handle
+                0x0000000020001604                TaskLEDHandle
+ COMMON         0x0000000020001608       0x48 Core/Src/stm32f1xx_hal_timebase_tim.o
+                0x0000000020001608                htim1
+ COMMON         0x0000000020001650       0x40 Core/Src/usart.o
+                0x0000000020001650                huart1
+ COMMON         0x0000000020001690        0x4 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
+                0x0000000020001690                uwTick
+ COMMON         0x0000000020001694      0x7d0 USB_DEVICE/App/usbd_cdc_if.o
+                0x0000000020001694                UserRxBufferFS
+                0x0000000020001a7c                UserTxBufferFS
+ COMMON         0x0000000020001e64      0x200 USB_DEVICE/App/usbd_desc.o
+                0x0000000020001e64                USBD_StrDesc
+ COMMON         0x0000000020002064      0x2ec USB_DEVICE/Target/usbd_conf.o
+                0x0000000020002064                hpcd_USB_FS
+                0x0000000020002350                . = ALIGN (0x4)
+                0x0000000020002350                _ebss = .
+                0x0000000020002350                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x00000000200032f0     0x1400 load address 0x0000000008005304
-                0x00000000200032f0                . = ALIGN (0x8)
+                0x0000000020002350      0xa00 load address 0x0000000008005304
+                0x0000000020002350                . = ALIGN (0x8)
                 [!provide]                        PROVIDE (end = .)
-                0x00000000200032f0                PROVIDE (_end = .)
-                0x00000000200042f0                . = (. + _Min_Heap_Size)
- *fill*         0x00000000200032f0     0x1000 
-                0x00000000200046f0                . = (. + _Min_Stack_Size)
- *fill*         0x00000000200042f0      0x400 
-                0x00000000200046f0                . = ALIGN (0x8)
+                0x0000000020002350                PROVIDE (_end = .)
+                0x0000000020002950                . = (. + _Min_Heap_Size)
+ *fill*         0x0000000020002350      0x600 
+                0x0000000020002d50                . = (. + _Min_Stack_Size)
+ *fill*         0x0000000020002950      0x400 
+                0x0000000020002d50                . = ALIGN (0x8)
 
 /DISCARD/
  libc.a(*)
