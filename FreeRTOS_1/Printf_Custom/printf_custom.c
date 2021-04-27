@@ -195,7 +195,7 @@ uint8_t printf_custom(char* format,...)
     	if(*traverse =='\0')
     		break;
     }
-
+	va_end(arg); 
 #ifdef  UART_PRINTF
     return HAL_UART_Transmit(&UART_PORT, ( uint8_t * )buffer, index, 0xFFFF );
 #endif
